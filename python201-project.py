@@ -1,7 +1,4 @@
-import requests
-import time
-import random
-import os
+import requests, time, random, os, sys
 
 def get_pokemon_names(file_name='pokemon_chars.txt'):
     url = "https://pokeapi.co/api/v2/pokemon"
@@ -83,5 +80,17 @@ def get_pokemon_info():
     print(" " + pokemon_name.capitalize())
     print('==========================')
     display_pokemon_info(data)
+
+    time.sleep(3)
+
+    get_new_pokemon = input('\nGet new pokemon character? (type "yes" or "no"): ').strip().lower()
+    if get_new_pokemon == "no":
+        print("\nGoodbye!")
+        sys.exit()
+    elif get_new_pokemon == "yes":
+        return get_pokemon_info()
+    else:
+        print("Invalid input, type yes or no.")
+        return get_pokemon_info()
 
 get_pokemon_info()
